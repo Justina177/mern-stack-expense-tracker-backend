@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv").config();
 const dbConnect = require("./config/dbConnect");
 const { registerUser } = require("./controllers/users/usersCtrl");
+const userRoute = require("./routes/users/userRoute");
 
 
 const app = express();
@@ -11,6 +12,6 @@ const app = express();
 dbConnect();
 
 // routes
-app.post('/register', registerUser)
+app.use("/", userRoute)
 
 module.exports = app;
